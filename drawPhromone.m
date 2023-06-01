@@ -1,8 +1,8 @@
-function [] = drawPhromone(tau, graph)
+function drawPhromone(tau, graph)
     maxTau = max(tau(:));
     minTau = min(tau(:));
 
-    tau_normalized = (tau - minTau) ./ (maxTau - minTau) + eps;
+    tau_normalized = (tau - minTau) ./ (maxTau - minTau);
 
     for i = 1 : graph.n - 1
         for j = i + 1 : graph.n
@@ -15,7 +15,7 @@ function [] = drawPhromone(tau, graph)
             X = [x1, x2];
             Y = [y1, y2];
 
-            plot(X, Y, 'color', [0, 0, 0], 'lineWidth', 10 .*  1)
+            plot(X, Y, 'color', [0, 0, 1 - tau_normalized(i, j), tau_normalized(i, j)], 'lineWidth', 10 * tau_normalized(i, j) + 1);
             hold on;
         end
     end
@@ -23,10 +23,11 @@ function [] = drawPhromone(tau, graph)
     for i = 1 : graph.n
         X = [graph.node(:).x];
         Y = [graph.node(:).y];
-        plot(X, Y, 'ok', 'MarkerSize', 10, 'MarkerEdgeColor', 'r', 'MarkerFaceColor', [1 .6 .6])
+        plot(X, Y, 'ok', 'MarkerSize', 10, 'MarkerEdgeColor', 'r', 'MarkerFaceColor', [1 .6 .6]);
+        hold on;
     end
 
-    title('All Pheromones')
-    box on
+    title('All Pheromones');
+    box on;
     hold off;
 end

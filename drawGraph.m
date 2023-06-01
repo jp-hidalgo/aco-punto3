@@ -12,7 +12,7 @@ for i = 1 : graph.n - 1
         y2 = graph.node(j).y;
         
         dist = sqrt((x1 - x2)^2 + (y1 - y2)^2);
-        if dist < 10
+        if dist <= 10
             X = [x1 , x2]; 
             Y = [y1 , y2];
         else

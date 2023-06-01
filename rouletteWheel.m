@@ -1,12 +1,7 @@
-function [ nextNode ] = rouletteWheel( P )
-% Roulette wheel to choose one edge based on P values 
-cumsumP = cumsum(P);
+function [nextNode] = rouletteWheel(P)
+    cumsumP = cumsum(P);
+    cumsumP = cumsumP / max(cumsumP);  % Normalize the cumulative probabilities to ensure a valid range [0, 1]
+    r = rand();
 
-r = rand();
-
-nextNode = find( r <= cumsumP );
-
-nextNode = nextNode(1);
-
-
+    nextNode = find(r <= cumsumP, 1);
 end

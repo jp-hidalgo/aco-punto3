@@ -43,7 +43,7 @@ for i = 1 : graph.n
         y1 = graph.node(i).y;
         y2 = graph.node(j).y;
         dist = sqrt((x1 - x2)^2 + (y1 - y2)^2);
-            if dist < 10
+            if dist <= 10
                 graph.edges(i, j) = dist;
             else
                 graph.edges(i, j) = inf;

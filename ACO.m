@@ -22,7 +22,7 @@ antNo = 50;
 
 tau0 = 10 * 1 / (  graph.n * mean( graph.edges(:)  )  );  % Initial phromone concentration
 
-tau = tau0 * ones( graph.n , graph.n); % Phromone matirx 
+tau = tau0 * ones( graph.n , graph.n)+eps; % Phromone matirx 
 eta = 1./ graph.edges;  % desirability of each edge 
 
 rho = 0.5; % Evaporation rate 
